@@ -78,9 +78,19 @@ function toString(data) {
         recipeString += data.drinks[0].strIngredient6 + " " + data.drinks[0].strMeasure6 +"\n"; 
     }
     recipeString += "\n" + data.drinks[0].strInstructions;
-    drinkImage = data.drinks[0].strThumb;
+    drinkImage = data.drinks[0].strDrinkThumb;
     console.log(recipeString);
-    return recipeString, drinkImage;
+    
+    var recipeParent = document.querySelector("#recipe");
+    var recipeEl = document.createElement("p");
+    recipeEl.textContent = recipeString;
+    recipeParent.appendChild(recipeEl);
+    var recipeImage = document.createElement("img");
+    recipeImage.src=drinkImage;
+    recipeParent.appendChild(recipeImage);
+
 }
+
+
 
 // -------------------------------------------
