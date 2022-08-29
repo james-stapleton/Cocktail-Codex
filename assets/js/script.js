@@ -53,7 +53,26 @@ if(currentTemp > 85) {
             drink = data.drinks[0].strDrink;
             console.log(data);
             console.log("It's a scorcher today! Try a : " + drink);
+            toString(data);
         })
     }
+
+function toString(data) {
+    var recipeString = "";
+    if (data.drinks[0].strIngredient1) {
+        recipeString += data.drinks[0].strIngredient1 + " " + data.drinks[0].strMeasure1 +"\n";
+        
+    }
+    if (data.drinks[0].strIngredient2) {
+        recipeString += data.drinks[0].strIngredient2 + " " + data.drinks[0].strMeasure2 +"\n";
+        
+    }
+    if (data.drinks[0].strIngredient3) {
+        recipeString += data.drinks[0].strIngredient3 + " " + data.drinks[0].strMeasure3 +"\n";
+        
+    }
+    console.log(recipeString);
+
+}
 
 // -------------------------------------------
