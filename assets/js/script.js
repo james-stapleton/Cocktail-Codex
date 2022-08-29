@@ -4,6 +4,7 @@ var currentCityEl = document.querySelector("#current-city");
 var currentWeatherIconEl = document.querySelector("#current-weather-icon")
 var currentTempEl = document.querySelector("#current-temp");
 var searchFormEl = document.querySelector('#search-form');
+var currentTemp;
 
 function getCurrentWeather(city) {
 
@@ -16,7 +17,7 @@ function getCurrentWeather(city) {
         .then(function (response) {
             var cityName = response.name;
             var currentDate = moment().format("M/D/YYYY");
-            var currentTemp = response.main.temp;
+            currentTemp = response.main.temp;
 
             currentTempEl.textContent = "Temp: " + Math.round(currentTemp) + " \u00B0F";
         })
@@ -35,3 +36,24 @@ function handleSearchFormSubmit(e) {
 }
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
+
+
+// James new commit --------------------
+currentTemp = 90;
+if(currentTemp > 85) {
+    var hotDayDrinks = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria"];
+    var drinkIndex = Math.floor(Math.random()*hotDayDrinks.length); 
+    var drink = "";
+    var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+hotDayDrinks[drinkIndex];
+    fetch(drinkURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            drink = data.drinks[0].strDrink;
+            console.log(data);
+            console.log("It's a scorcher today! Try a : " + drink);
+        })
+    }
+
+// -------------------------------------------
