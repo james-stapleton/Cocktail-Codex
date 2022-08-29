@@ -61,18 +61,26 @@ function toString(data) {
     var recipeString = "";
     if (data.drinks[0].strIngredient1) {
         recipeString += data.drinks[0].strIngredient1 + " " + data.drinks[0].strMeasure1 +"\n";
-        
     }
     if (data.drinks[0].strIngredient2) {
         recipeString += data.drinks[0].strIngredient2 + " " + data.drinks[0].strMeasure2 +"\n";
-        
     }
     if (data.drinks[0].strIngredient3) {
-        recipeString += data.drinks[0].strIngredient3 + " " + data.drinks[0].strMeasure3 +"\n";
-        
+        recipeString += data.drinks[0].strIngredient3 + " " + data.drinks[0].strMeasure3 +"\n"; 
     }
+    if (data.drinks[0].strIngredient4) {
+        recipeString += data.drinks[0].strIngredient4 + " " + data.drinks[0].strMeasure4 +"\n";
+    }
+    if (data.drinks[0].strIngredient5) {
+        recipeString += data.drinks[0].strIngredient5 + " " + data.drinks[0].strMeasure5 +"\n";
+    }
+    if (data.drinks[0].strIngredient6) {
+        recipeString += data.drinks[0].strIngredient6 + " " + data.drinks[0].strMeasure6 +"\n"; 
+    }
+    recipeString += "\n" + data.drinks[0].strInstructions;
+    drinkImage = data.drinks[0].strThumb;
     console.log(recipeString);
-
+    return recipeString, drinkImage;
 }
 
 // -------------------------------------------
