@@ -5,26 +5,32 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foundation for Sites</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <link rel="stylesheet" href="./assets/css/foundation.css">
     <link rel="stylesheet" href="./assets/css/app.css">
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
 <body>
-
     <div class="grid-container">
       <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
           <h1>Cocktail Codex</h1>
         </div>
       </div>
-
-
-
-
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
+<!-- Start Temp -->
+      <div>
+        <form id="search-form">
+            <label id="search-label" for="search-input">Search for a City:</label>
+            <input id="search-input" class="form-input" placeholder="e.g. Philadelphia"></input>
+            <button class="btn">Search</button>
+            <p id="current-temp"></p>
+        </form>
+    </div>
+<!-- End Temp -->
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/what-input.js"></script>
+    <script src="./assets/js/vendor/foundation.js"></script>
+    <script src="./assets/js/app.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
