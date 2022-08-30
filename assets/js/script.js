@@ -75,18 +75,43 @@ function drinkRec(currentTemp) {
     var drinksArray = [];
     var drinkIndex;
     var drink = "";
-    var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+    var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
 if(currentTemp > 85) {
-    drinksArray = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria"];
+    drinksArray = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria", "mint_julep"];
     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
-    drinkURL += drinksArray[drinkIndex];
+    drink = drinksArray[drinkIndex];
+    drinkURL += drink;
     tempSearch(drinkURL);
+    console.log("It's a scorcher today! Try a refreshing " + drink);
     }
 
-    else if (currentTemp > 50 && currentTemp <=85) {
-        drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=old_fashioned";
+    else if (currentTemp > 60 && currentTemp <=85) {
+    
+    drinksArray = ["moscow_mule", "tom_collins", "rum_punch", "sazerac", "martini", "whiskey_sour", "sidecar"];
+    drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+    drink = drinksArray[drinkIndex];
+    drinkURL += drink;
+    tempSearch(drinkURL);
+    console.log("Nice Day! Relax with an easy-sipping " + drink);
+    }
+
+    else if (currentTemp >40 && currentTemp <= 60) {
+    drinksArray = ["old_fashioned", "manhatten", "martinez", "negroni", "boulevardier", "", "sidecar"];
+    drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+    drink = drinksArray[drinkIndex];
+    drinkURL += drink;
+    tempSearch(drinkURL);
+    console.log("It's a bit chilly! You need a little liquid warmth from a stiff " + drink);
+    }
+
+    else {
+        drinksArray = ["irish_coffee", "hot_toddy", "mulled_wine", "eggnog", "mudslide"];
+        drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+        drink = drinksArray[drinkIndex];
+        drinkURL += drink;
         tempSearch(drinkURL);
+        console.log("Brr. Warm up with a " + drink);
     }
 }
 
@@ -98,7 +123,6 @@ function tempSearch(drinkURL) {
         .then(function (data) {
             drink = data.drinks[0].strDrink;
             console.log(data);
-            console.log("It's a scorcher today! Try a : " + drink);
             toString(data);
         })
 }
