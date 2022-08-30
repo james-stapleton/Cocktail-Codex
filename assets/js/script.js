@@ -47,5 +47,5 @@ $(document).ready(function() {
 $('.close-modal').click(function() {
     $('#age').foundation('close');
   });
-  
+
 //end modal
