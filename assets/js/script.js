@@ -46,13 +46,29 @@ function getCocktailFromIngredient(ingredientName) {
         return response.json();
     })
 
-    .then(function (response) {
-        console.log(response);
-        var drinksArray = response.drinks.sort(() => 0.5 - Math.random());
+    .then(function (data) {
+        console.log(data);
+        var drinksArray = data.drinks.sort(() => 0.5 - Math.random());
         slicedArray = drinksArray.slice(0, 5)
         console.log(slicedArray)
+        toStringIngredient(slicedArray);
     })
 }
+
+    function toStringIngredient(data){
+        console.log(data[0].strDrink)
+        console.log(data[0].strDrinkThumb)
+        var drinkName = document.createElement("name");
+        drinkName.src = data[0].strDrink;
+
+        var image = document.createElement("img");
+        image.src = data[0].strDrinkThumb;
+
+        var searchedParent = document.querySelector("#recipe");
+
+        searchedParent.appendChild(image);
+        searchedParent.appendChild(drinkName);
+    }
 
 //!----------------------------------------
 
