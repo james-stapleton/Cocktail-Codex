@@ -18,7 +18,7 @@ function getCurrentWeather(city) {
             var cityName = response.name;
             var currentDate = moment().format("M/D/YYYY");
             currentTemp = response.main.temp;
-
+            drinkRec(currentTemp);
             currentTempEl.textContent = "Temp: " + Math.round(currentTemp) + " \u00B0F";
         })
 };
@@ -70,7 +70,8 @@ searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
 
 // James new commit --------------------
-currentTemp = 90;
+
+function drinkRec(currentTemp) {
 if(currentTemp > 85) {
     var hotDayDrinks = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria"];
     var drinkIndex = Math.floor(Math.random()*hotDayDrinks.length); 
@@ -87,6 +88,22 @@ if(currentTemp > 85) {
             toString(data);
         })
     }
+
+    else  {
+        drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=old_fashioned";
+        fetch(drinkURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            drink = data.drinks[0].strDrink;
+            console.log(data);
+            console.log("It's a scorcher today! Try a : " + drink);
+            toString(data);
+        })
+
+    }
+}
 
 function toString(data) {
     var recipeString = "";
@@ -126,13 +143,13 @@ function toString(data) {
 
 // start modal
 
-$(document).ready(function() {
-    $('#age').foundation('open');
-})
+// $(document).ready(function() {
+//     $('#age').foundation('open');
+// })
 
-$('.close-modal').click(function() {
-    $('#age').foundation('close');
-  });
+// $('.close-modal').click(function() {
+//     $('#age').foundation('close');
+//   });
 
 //end modal
 
