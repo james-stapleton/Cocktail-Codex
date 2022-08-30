@@ -71,23 +71,26 @@ searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
 // James new commit --------------------
 
+// Function that takes the temperature as a paramater and uses conditional logic to recommend a drink
 function drinkRec(currentTemp) {
-    var drinksArray = [];
-    var drinkIndex;
-    var drink = "";
-    var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-
+    var drinksArray = []; //empty array that will be filled with curated drink suggestions
+    var drinkIndex; //index variable that will be randomly assigned to select a drink from the array
+    var drink = "";//empty string that will be given the name of a drink from the array
+    var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="; //URL for the fetch that will be appended with drink string
+// conditional code for temperature ranges
 if(currentTemp > 85) {
+    //populate the array
     drinksArray = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria", "mint_julep"];
+    //randomly generate the index then select the drink
     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
     drink = drinksArray[drinkIndex];
+    //append the selected drink name to the url and call the tempSearch function which contains the Fetch code
     drinkURL += drink;
     tempSearch(drinkURL);
     console.log("It's a scorcher today! Try a refreshing " + drink);
     }
 
-    else if (currentTemp > 60 && currentTemp <=85) {
-    
+else if (currentTemp > 60 && currentTemp <=85) {
     drinksArray = ["moscow_mule", "tom_collins", "rum_punch", "sazerac", "martini", "whiskey_sour", "sidecar"];
     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
     drink = drinksArray[drinkIndex];
@@ -96,7 +99,7 @@ if(currentTemp > 85) {
     console.log("Nice Day! Relax with an easy-sipping " + drink);
     }
 
-    else if (currentTemp >40 && currentTemp <= 60) {
+else if (currentTemp >40 && currentTemp <= 60) {
     drinksArray = ["old_fashioned", "manhatten", "martinez", "negroni", "boulevardier", "", "sidecar"];
     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
     drink = drinksArray[drinkIndex];
@@ -105,16 +108,17 @@ if(currentTemp > 85) {
     console.log("It's a bit chilly! You need a little liquid warmth from a stiff " + drink);
     }
 
-    else {
-        drinksArray = ["irish_coffee", "hot_toddy", "mulled_wine", "eggnog", "mudslide"];
-        drinkIndex = Math.floor(Math.random()*drinksArray.length); 
-        drink = drinksArray[drinkIndex];
-        drinkURL += drink;
-        tempSearch(drinkURL);
-        console.log("Brr. Warm up with a " + drink);
+else {
+     drinksArray = ["irish_coffee", "hot_toddy", "mulled_wine", "eggnog", "mudslide"];
+     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+     drink = drinksArray[drinkIndex];
+     drinkURL += drink;
+     tempSearch(drinkURL);
+     console.log("Brr. Warm up with a " + drink);
     }
 }
 
+//function to handle the fetch code. Calls the toString function
 function tempSearch(drinkURL) {
     fetch(drinkURL)
         .then(function (response) {
@@ -123,12 +127,13 @@ function tempSearch(drinkURL) {
         .then(function (data) {
             drink = data.drinks[0].strDrink;
             console.log(data);
-            toString(data);
+            toString(data); //Send the data to a new function for parsing and formatting recipe display
         })
 }
 
+// This function reads the data and transforms it into a comprehensive and intuitive recipe
 function toString(data) {
-    var recipeString = "";
+    var recipeString = ""; //Empty string that will be appended with ingredients, instructions and measures
     if (data.drinks[0].strIngredient1) {
         recipeString += data.drinks[0].strIngredient1 + " " + data.drinks[0].strMeasure1 +"\n";
     }
@@ -150,7 +155,7 @@ function toString(data) {
     recipeString += "\n" + data.drinks[0].strInstructions;
     drinkImage = data.drinks[0].strDrinkThumb;
     console.log(recipeString);
-    
+    //Dynamically create HTML elements for recipe and image
     var recipeParent = document.querySelector("#recipe");
     recipeParent.innerHTML = '';
     var recipeEl = document.createElement("p");
@@ -159,7 +164,6 @@ function toString(data) {
     var recipeImage = document.createElement("img");
     recipeImage.src=drinkImage;
     recipeParent.appendChild(recipeImage);
-
 }
 
 // -------------------------------------------
