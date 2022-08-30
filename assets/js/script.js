@@ -72,11 +72,15 @@ searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 // James new commit --------------------
 
 function drinkRec(currentTemp) {
-if(currentTemp > 85) {
-    var hotDayDrinks = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria"];
-    var drinkIndex = Math.floor(Math.random()*hotDayDrinks.length); 
+    var drinksArray = [];
+    var drinkIndex;
     var drink = "";
-    var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+hotDayDrinks[drinkIndex];
+    var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+
+if(currentTemp > 85) {
+    drinksArray = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria"];
+    drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+    drinkURL += drinksArray[drinkIndex];
     fetch(drinkURL)
         .then(function (response) {
             return response.json();
@@ -89,7 +93,7 @@ if(currentTemp > 85) {
         })
     }
 
-    else  {
+    else if (currentTemp > 50 && currentTemp <=85) {
         drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=old_fashioned";
         fetch(drinkURL)
         .then(function (response) {
