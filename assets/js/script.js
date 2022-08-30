@@ -91,6 +91,16 @@ function toString(data) {
 
 }
 
-
-
 // -------------------------------------------
+
+// start modal
+
+$(document).ready(function() {
+    $('#age').foundation('open');
+})
+
+$('.close-modal').click(function() {
+    $('#age').foundation('close');
+  });
+
+//end modal
