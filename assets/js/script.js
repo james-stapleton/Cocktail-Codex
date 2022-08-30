@@ -56,18 +56,20 @@ function getCocktailFromIngredient(ingredientName) {
 }
 
     function toStringIngredient(data){
+        var searchedParent = document.querySelector("#recipe");
+        searchedParent.innerHTML = "";
         console.log(data[0].strDrink)
         console.log(data[0].strDrinkThumb)
-        var drinkName = document.createElement("name");
-        drinkName.src = data[0].strDrink;
+        var drinkName = document.createElement("li");
+        drinkName.textContent = data[0].strDrink;
 
         var image = document.createElement("img");
         image.src = data[0].strDrinkThumb;
 
-        var searchedParent = document.querySelector("#recipe");
-
-        searchedParent.appendChild(image);
+        
         searchedParent.appendChild(drinkName);
+        searchedParent.appendChild(image);
+
     }
 
 //!----------------------------------------
