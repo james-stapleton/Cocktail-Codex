@@ -41,14 +41,20 @@ function getCocktailFromIngredient(ingredientName) {
 
     fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + ingredientName)
 
+
     .then(function (response) {
         return response.json();
     })
 
     .then(function (response) {
         console.log(response);
+        var drinksArray = response.drinks.sort(() => 0.5 - Math.random());
+        slicedArray = drinksArray.slice(0, 5)
+        console.log(slicedArray)
     })
 }
+
+//!----------------------------------------
 
 function handleIngredientFormSubmit(e) {
     e.preventDefault();
@@ -64,6 +70,8 @@ function handleIngredientFormSubmit(e) {
 
 
 searchIngredientEl.addEventListener('submit', handleIngredientFormSubmit);
+
+
 // --- Search by ingredient --- END
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
@@ -139,8 +147,7 @@ function toString(data) {
 
 }
 
-// -------------------------------------------
-
+// ------------------------------------------
 // start modal
 
 // $(document).ready(function() {
