@@ -81,6 +81,16 @@ if(currentTemp > 85) {
     drinksArray = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria"];
     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
     drinkURL += drinksArray[drinkIndex];
+    tempSearch(drinkURL);
+    }
+
+    else if (currentTemp > 50 && currentTemp <=85) {
+        drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=old_fashioned";
+        tempSearch(drinkURL);
+    }
+}
+
+function tempSearch(drinkURL) {
     fetch(drinkURL)
         .then(function (response) {
             return response.json();
@@ -91,22 +101,6 @@ if(currentTemp > 85) {
             console.log("It's a scorcher today! Try a : " + drink);
             toString(data);
         })
-    }
-
-    else if (currentTemp > 50 && currentTemp <=85) {
-        drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=old_fashioned";
-        fetch(drinkURL)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            drink = data.drinks[0].strDrink;
-            console.log(data);
-            console.log("It's a scorcher today! Try a : " + drink);
-            toString(data);
-        })
-
-    }
 }
 
 function toString(data) {
@@ -134,6 +128,7 @@ function toString(data) {
     console.log(recipeString);
     
     var recipeParent = document.querySelector("#recipe");
+    recipeParent.innerHTML = '';
     var recipeEl = document.createElement("p");
     recipeEl.textContent = recipeString;
     recipeParent.appendChild(recipeEl);
