@@ -63,12 +63,6 @@ function handleIngredientFormSubmit(e) {
 
 
 
-searchIngredientEl.addEventListener('submit', handleIngredientFormSubmit);
-// --- Search by ingredient --- END
-
-searchFormEl.addEventListener('submit', handleSearchFormSubmit);
-=======
-searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
 
 // James new commit --------------------
@@ -123,6 +117,12 @@ function toString(data) {
     recipeParent.appendChild(recipeImage);
 
 }
+
+
+searchIngredientEl.addEventListener('submit', handleIngredientFormSubmit);
+// --- Search by ingredient --- END
+
+searchFormEl.addEventListener('submit', handleSearchFormSubmit);
 
 // -------------------------------------------
 
