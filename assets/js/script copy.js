@@ -9,18 +9,19 @@ var recipeParent = document.querySelector("#recipe");
 var savedList = document.querySelector("#saved-drinks");
 var tempText = document.querySelector("#tempText")
 
-
-// Event delegation function to display a recipe when a saved drink is clicked on
 savedList.addEventListener("click", function (event) {
-    var targetDrink = event.target; 
+    var targetDrink = event.target;
     var targetDrinkName = targetDrink.textContent;
     console.log(targetDrinkName);
     var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+targetDrinkName;
     tempSearch(drinkURL);
+    
 });
 
+//!-------------------------------------------------------------------
+//! Create Save Button and local storage logic
 // localStorage.setItem("drinks", JSON.stringify(["moscow_mule", "tom_collins", "rum_punch", "sazerac", "martini", "whiskey_sour", "sidecar"]));
-localStorage.clear();
+// localStorage.clear();
 var savedDrinks = localStorage.getItem("drinks");
 var savedDrinksArray = [];
 if (!savedDrinks) {
@@ -45,6 +46,10 @@ function generateSaveButton () {
 
     recipeParent.appendChild(save);
 }
+//--------------------------------------------------------------
+
+//!-----------------------------------------------------------------
+//! Local storage to load saved items
 
 var savedDrinksButton = document.querySelector("#saved-drinks-btn");
 savedDrinksButton.addEventListener("click", function () {
@@ -57,6 +62,12 @@ savedDrinksButton.addEventListener("click", function () {
         savedList.appendChild(list);
     }
 });
+
+
+
+//!--------------------------------------------------------------------
+
+
 
 function getCurrentWeather(city) {
 
@@ -120,27 +131,11 @@ function getCocktailFromIngredient(ingredientName) {
             var drinkName = document.createElement("li");
             drinkName.textContent = data[i].strDrink;
             var image = document.createElement("img");
-            image.id="image"+i;
-            //!----------------------------------------------------------------------------
-
-           image.addEventListener("click", function (event) {
-            var imageTarget = event.target;
-
-            var imageID = imageTarget.id;
-            var imageName = document.getElementById(imageID).previousSibling.textContent;
-            console.log(imageName);
-            var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+imageName;
-            tempSearch(drinkURL);
-            generateSaveButton();
-            console.log(imageID);
-             
-         })
- 
-         //!----------------------------------------------------------------------------
             image.src = data[i].strDrinkThumb;
             searchedParent.appendChild(drinkName);
             drinkName.appendChild(image);
         }
+
     }
 
 //!----------------------------------------
