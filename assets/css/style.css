@@ -5,3 +5,11 @@
 li{
     list-style-type: none;
 }
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 300px;
+}
