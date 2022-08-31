@@ -5,6 +5,58 @@ var currentTempEl = document.querySelector("#current-temp");
 var searchFormEl = document.querySelector('#search-form');
 var cityDrink = document.querySelector("#city-drink-name")
 var currentTemp;
+var recipeParent = document.querySelector("#recipe");
+var savedList = document.querySelector("#saved-drinks");
+
+//!-------------------------------------------------------------------
+//! Create Save Button and local storage logic
+// localStorage.setItem("drinks", JSON.stringify(["moscow_mule", "tom_collins", "rum_punch", "sazerac", "martini", "whiskey_sour", "sidecar"]));
+// localStorage.clear();
+var savedDrinks = localStorage.getItem("drinks");
+var savedDrinksArray = [];
+if (!savedDrinks) {
+    savedDrinksArray = [];
+}
+else {
+    savedDrinksArray = JSON.parse(localStorage.getItem("drinks"));
+}
+
+function generateSaveButton () {
+    console.log("this function was called");
+    var save = document.createElement("button");
+    save.type = "button";
+    save.innerHTML = "Save this recipe";
+
+   save.addEventListener("click", function () {
+        console.log(nameVar);
+        savedDrinksArray.push(nameVar);
+        localStorage.setItem("drinks", JSON.stringify(savedDrinksArray));
+        console.log(savedDrinksArray);
+    })
+
+    recipeParent.appendChild(save);
+}
+//--------------------------------------------------------------
+
+//!-----------------------------------------------------------------
+//! Local storage to load saved items
+
+var savedDrinksButton = document.querySelector("#saved-drinks-btn");
+savedDrinksButton.addEventListener("click", function () {
+    console.log(savedDrinksArray);
+    console.log("this should fill the list");
+    savedList.innerHTML = "";
+    for (var i = 0; i<savedDrinksArray.length; i++) {
+        var list = document.createElement("li");
+        list.textContent = savedDrinksArray[i];
+        savedList.appendChild(list);
+    }
+});
+
+
+
+//!--------------------------------------------------------------------
+
 
 
 function getCurrentWeather(city) {
@@ -184,11 +236,17 @@ function toString(data) {
     drinkImage = data.drinks[0].strDrinkThumb;
     console.log(recipeString);
     //Dynamically create HTML elements for recipe and image
-    var recipeParent = document.querySelector("#recipe");
+    // var recipeParent = document.querySelector("#recipe");
     recipeParent.innerHTML = '';
     cityDrink.innerHTML = "";
     var recipeName = document.createElement("h3");
-    recipeName.textContent = data.drinks[0].strDrink;
+    recipeName.id="recipe-name";
+    nameVar = data.drinks[0].strDrink;
+    recipeName.textContent = nameVar;
+    //!Dynamically create save button with drink name"
+    
+    generateSaveButton();
+
     cityDrink.append(recipeName);
     var recipeEl = document.createElement("p");
     recipeEl.textContent = recipeString;
