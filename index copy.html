@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/foundation.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  </head>
+<body>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <h1>Cocktail Codex</h1>
+        </div>
+      </div>
+<!-- Start Temp -->
+      <div>
+        <form id="search-form">
+            <label id="search-label" for="search-input">Search for a City:</label>
+            <input id="search-input" class="form-input" placeholder="e.g. Philadelphia"></input>
+            <button class="btn">Search</button>
+            <p id="current-temp"></p>
+        </form>
+    </div>
+<!-- End Temp -->
+
+
+<!-- Start Ingredient Search -->
+<div>
+  <form id="search-ingredient-form">
+      <label id="search-ingredient-label" for="search-input">Search by Ingredient:</label>
+      <input id="search-ingredient-input" class="form-input" placeholder="e.g. Vodka"></input>
+      <button class="btn">Search</button>
+      <p id="#search-ingrdient"></p>
+  </form>
+</div>
+<!-- End Ingredient Search -->
+
+<div id="tempText"></div>
+<div id="city-drink-name"></div>
+<div id="recipe"></div>
+
+
+<!-- start modal -->
+
+<div id="age" data-reveal data-options="closeOnClick:false;closeOnEsc:false;" class="reveal reveal-modal medium">
+  <h2 class="text-center">Age Verification for Cocktail Codex</h2>
+  <h3 class="bold text-center">You must be at least 21 years of age to access this website.</h3>
+  <div class="row">
+    <div class="small-6 columns">
+        <h3 class="text-center"><a href="http://www.google.com/">Under 21</a></h3>
+        <p class="text-center">I am under 21.</p>
+    </div>
+    <div class="small-6 columns">
+      <h3 class="text-center"><a class="close-modal">21+ (Enter)</a></h3>
+      <p class="text-center">I am 21+ years old.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- end modal -->
+
+<div id="saved">
+  <button class="btn" id="saved-drinks-btn">Saved Drinks</button>
+  <ul id="saved-drinks"></ul>
+</div>
+
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/what-input.js"></script>
+    <script src="./assets/js/vendor/foundation.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/script copy.js"></script>
+  </body>
+</html>
+
