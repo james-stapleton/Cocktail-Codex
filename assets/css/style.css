@@ -9,7 +9,7 @@ li{
 button {
     cursor: pointer;
 }
-
+/* limit size of all images */
 img {
     max-width: 300px;
 }
