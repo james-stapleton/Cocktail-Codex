@@ -92,7 +92,7 @@ function handleSearchFormSubmit(e) {
 var searchIngredientEl = document.querySelector("#search-ingredient-form");
 
 function getCocktailFromIngredient(ingredientName) {
-
+    
     fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + ingredientName)
 
 
