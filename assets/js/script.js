@@ -3,6 +3,7 @@ var currentWeatherEl = document.querySelector("#current-weather");
 var currentCityEl = document.querySelector("#current-city");
 var currentTempEl = document.querySelector("#current-temp");
 var searchFormEl = document.querySelector('#search-form');
+var cityDrink = document.querySelector("#city-drink-name")
 var currentTemp;
 
 
@@ -68,7 +69,7 @@ function getCocktailFromIngredient(ingredientName) {
             var image = document.createElement("img");
             image.src = data[i].strDrinkThumb;
             searchedParent.appendChild(drinkName);
-            searchedParent.appendChild(image);
+            drinkName.appendChild(image);
         }
 
     }
@@ -185,6 +186,10 @@ function toString(data) {
     //Dynamically create HTML elements for recipe and image
     var recipeParent = document.querySelector("#recipe");
     recipeParent.innerHTML = '';
+    cityDrink.innerHTML = "";
+    var recipeName = document.createElement("h3");
+    recipeName.textContent = data.drinks[0].strDrink;
+    cityDrink.append(recipeName);
     var recipeEl = document.createElement("p");
     recipeEl.textContent = recipeString;
     recipeParent.appendChild(recipeEl);
@@ -192,6 +197,7 @@ function toString(data) {
     recipeImage.src=drinkImage;
     recipeParent.appendChild(recipeImage);
 }
+
 
 // ------------------------------------------
 // start modal
