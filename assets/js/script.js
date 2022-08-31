@@ -68,7 +68,7 @@ function getCocktailFromIngredient(ingredientName) {
             var image = document.createElement("img");
             image.src = data[i].strDrinkThumb;
             searchedParent.appendChild(drinkName);
-            searchedParent.appendChild(image);
+            drinkName.appendChild(image);
         }
 
     }
