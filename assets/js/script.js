@@ -60,15 +60,16 @@ function getCocktailFromIngredient(ingredientName) {
         searchedParent.innerHTML = "";
         console.log(data[0].strDrink)
         console.log(data[0].strDrinkThumb)
-        var drinkName = document.createElement("li");
-        drinkName.textContent = data[0].strDrink;
 
-        var image = document.createElement("img");
-        image.src = data[0].strDrinkThumb;
 
-        
-        searchedParent.appendChild(drinkName);
-        searchedParent.appendChild(image);
+        for (let i = 0; i < data.length; i++) {
+            var drinkName = document.createElement("li");
+            drinkName.textContent = data[i].strDrink;
+            var image = document.createElement("img");
+            image.src = data[i].strDrinkThumb;
+            searchedParent.appendChild(drinkName);
+            searchedParent.appendChild(image);
+        }
 
     }
 
