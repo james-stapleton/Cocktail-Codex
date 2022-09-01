@@ -9,6 +9,10 @@ Here is an example of the screen that you are welcomed with on loading the page.
 After a search this is what will be like once returned.
 ![an example of a search query done on the site](./assets/images/example.png)
 
+We'll also collect the data on how many people view a secific recipe to determine popularity.
+![an example of a search query done on the site](./assets/images/rankings.png)
+
+
 ##
 
 https://james-stapleton.github.io/Cocktail-Codex/
