@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="./assets/css/foundation.css">
     <link rel="stylesheet" href="./assets/css/app.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Background image -->
+    <style>
+      body {
+        background: url("https://img.freepik.com/premium-photo/blurred-background-classic-wooden-bar-counter-with-empty-chairs-alcohol-background_281858-2635.jpg?w=996") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+    </style>
+
   </head>
 <body>
   <div id="statusBar">
@@ -44,7 +55,7 @@
 <!-- End Ingredient Search -->
 
 <div id="tempText"></div>
-<div id="city-drink-name"></div>
+<div id="city-drink-name" class="grid-x grid-margin-x"></div>
 <div id="recipe" class="grid-x grid-margin-x"></div>
 
 
@@ -54,21 +65,22 @@
   <h2 class="text-center">Age Verification for Cocktail Codex</h2>
   <h3 class="bold text-center">You must be at least 21 years of age to access this website.</h3>
   <div class="row">
-    <div class="small-6 columns">
-        <h3 class="text-center"><a href="http://www.google.com/">Under 21</a></h3>
-        <p class="text-center">I am under 21.</p>
-    </div>
-    <div class="small-6 columns">
+    <div class="small-6 columns border">
       <h3 class="text-center"><a class="close-modal">21+ (Enter)</a></h3>
       <p class="text-center">I am 21+ years old.</p>
     </div>
+    <div class="small-6 columns border">
+        <h3 class="text-center"><a href="http://www.google.com/">Under 21</a></h3>
+        <p class="text-center">I am under 21.</p>
+    </div>
+    
   </div>
 </div>
 
 
 <!-- end modal -->
 
-<div id="saved">
+<div id="saved" class="row">
   <button class="button" id="saved-drinks-btn">Saved Drinks</button>
   <ul id="saved-drinks"></ul>
 </div>

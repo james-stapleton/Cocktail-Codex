@@ -34,7 +34,7 @@ function generateSaveButton () {
     console.log("this function was called");
     var save = document.createElement("button");
     save.type = "button";
-    save.className = "button";
+    save.className = "button small-3 cell";
     save.innerHTML = "Save this recipe";
 
    save.addEventListener("click", function () {
@@ -283,24 +283,24 @@ function tempSearch(drinkURL) {
 function toString(data) {
     var recipeString = ""; //Empty string that will be appended with ingredients, instructions and measures
     if (data.drinks[0].strIngredient1) {
-        recipeString += data.drinks[0].strIngredient1 + " " + data.drinks[0].strMeasure1 +"\n";
+        recipeString +=  data.drinks[0].strMeasure1 + " " + data.drinks[0].strIngredient1 +"<br>";
     }
     if (data.drinks[0].strIngredient2) {
-        recipeString += data.drinks[0].strIngredient2 + " " + data.drinks[0].strMeasure2 +"\n";
+        recipeString +=data.drinks[0].strMeasure2 + " " + data.drinks[0].strIngredient2 + "<br>";
     }
     if (data.drinks[0].strIngredient3) {
-        recipeString += data.drinks[0].strIngredient3 + " " + data.drinks[0].strMeasure3 +"\n"; 
+        recipeString += data.drinks[0].strIngredient3 + " " + data.drinks[0].strMeasure3 +"<br>"; 
     }
     if (data.drinks[0].strIngredient4) {
-        recipeString += data.drinks[0].strIngredient4 + " " + data.drinks[0].strMeasure4 +"\n";
+        recipeString += data.drinks[0].strIngredient4 + " " + data.drinks[0].strMeasure4 +"<br>";
     }
     if (data.drinks[0].strIngredient5) {
-        recipeString += data.drinks[0].strIngredient5 + " " + data.drinks[0].strMeasure5 +"\n";
+        recipeString += data.drinks[0].strIngredient5 + " " + data.drinks[0].strMeasure5 +"<br>";
     }
     if (data.drinks[0].strIngredient6) {
-        recipeString += data.drinks[0].strIngredient6 + " " + data.drinks[0].strMeasure6 +"\n"; 
+        recipeString += data.drinks[0].strIngredient6 + " " + data.drinks[0].strMeasure6 +"<br>"; 
     }
-    recipeString += "\n" + data.drinks[0].strInstructions;
+    recipeString += "<br>" + data.drinks[0].strInstructions;
     drinkImage = data.drinks[0].strDrinkThumb;
     console.log(recipeString);
     //Dynamically create HTML elements for recipe and image
@@ -311,29 +311,29 @@ function toString(data) {
     recipeName.id="recipe-name";
     nameVar = (data.drinks[0].strDrink);
     recipeName.textContent = nameVar;
-    //!Dynamically create save button with drink name"
-    
-    generateSaveButton();
-
+    recipeName.classList = "small-12 cell"
     cityDrink.append(recipeName);
     var recipeEl = document.createElement("p");
-    recipeEl.textContent = recipeString;
+    recipeEl.classList = "small-6 cell";
+    recipeEl.innerHTML = recipeString;
     recipeParent.appendChild(recipeEl);
     var recipeImage = document.createElement("img");
+    recipeImage.classList ="small-6 cell";
     recipeImage.src=drinkImage;
     recipeParent.appendChild(recipeImage);
+    generateSaveButton();
 }
 
 
 // ------------------------------------------
-// start modal
+//start modal
 
-// $(document).ready(function() {
-//     $('#age').foundation('open');
-// })
+$(document).ready(function() {
+    $('#age').foundation('open');
+})
 
-// $('.close-modal').click(function() {
-//     $('#age').foundation('close');
-//   });
+$('.close-modal').click(function() {
+    $('#age').foundation('close');
+  });
 
 //end modal
