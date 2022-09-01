@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Curator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/foundation.css">
+    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Background image -->
+    <style>
+      body {
+        background: url("https://img.freepik.com/premium-photo/blurred-background-classic-wooden-bar-counter-with-empty-chairs-alcohol-background_281858-2635.jpg?w=996") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+    </style>
+
+  </head>
+<body>
+  <div id="statusBar">
+      <section id="rankings"><a href="./rankings.html">Check Drink Rankings</a></section>
+  </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <h1>Cocktail Curator</h1>
+        </div>
+      </div>
+<!-- Start Temp -->
+      <div>
+        <form id="search-form">
+            <label id="search-label" for="search-input">Search for a City:</label>
+            <input id="search-input" class="form-input" placeholder="e.g. Philadelphia"></input>
+            <button class="button">Search</button>
+            <p id="current-temp"></p>
+        </form>
+    </div>
+<!-- End Temp -->
+
+
+<!-- Start Ingredient Search -->
+<div>
+  <form id="search-ingredient-form">
+      <label id="search-ingredient-label" for="search-input">Search by Ingredient:</label>
+      <input id="search-ingredient-input" class="form-input" placeholder="e.g. Vodka"></input>
+      <button class="button">Search</button>
+      <p id="#search-ingrdient"></p>
+  </form>
+</div>
+<!-- End Ingredient Search -->
+
+
+
+<div id="tempText"></div>
+<div id="city-drink-name" class="grid-x grid-margin-x"></div>
+<div id="recipe" class="grid-x grid-margin-x"></div>
+
+
+<div id="saved" class="row">
+  <button class="button" id="saved-drinks-btn">Saved Drinks</button>
+  <ul id="saved-drinks"></ul>
+</div>
+
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/what-input.js"></script>
+    <script src="./assets/js/vendor/foundation.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
+
