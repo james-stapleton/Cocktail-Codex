@@ -36,6 +36,7 @@ input::placeholder {
 
 input {
     text-shadow: none;
+    color: black;
 }
 
 #age {
