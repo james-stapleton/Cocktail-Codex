@@ -140,11 +140,9 @@ function getCocktailFromIngredient(ingredientName) {
 
             // START Ranking Code
 
-            var rankNum = 0;
-
             rankingEntry = {
                 drinkName: document.getElementById(imageID).previousSibling.textContent,
-                rank: rankNum
+                rank: 1
             }
 
             console.log(drinkName);
@@ -155,15 +153,21 @@ function getCocktailFromIngredient(ingredientName) {
                 rankings = [];
             }
 
+            if ((rankings).some(check => check.drinkName === document.getElementById(imageID).previousSibling.textContent)) {
+                objIndex = rankings.findIndex((rankingEntry => rankingEntry.drinkName == document.getElementById(imageID).previousSibling.textContent));
+                rankings[objIndex].rank += 1;
+                rankings.push();
+            }
 
-            rankings.push(rankingEntry);
+            else {
+            rankings.push(rankingEntry);                
+            }
 
             rankings.sort(function (a, b) {
                 return b.rank - a.rank;
             });
 
             localStorage.setItem("rankings", JSON.stringify(rankings));
-            // location.href = "./rankings.html";
 
             // END Ranking Code
              
