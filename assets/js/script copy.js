@@ -20,7 +20,7 @@ savedList.addEventListener("click", function (event) {
 });
 
 // localStorage.setItem("drinks", JSON.stringify(["moscow_mule", "tom_collins", "rum_punch", "sazerac", "martini", "whiskey_sour", "sidecar"]));
-localStorage.clear();
+// localStorage.clear();
 var savedDrinks = localStorage.getItem("drinks");
 var savedDrinksArray = [];
 if (!savedDrinks) {
@@ -35,6 +35,7 @@ function generateSaveButton () {
     var save = document.createElement("button");
     save.type = "button";
     save.innerHTML = "Save this recipe";
+    save.classList = "small-3 cell";
 
    save.addEventListener("click", function () {
         console.log(nameVar);
@@ -246,24 +247,24 @@ function tempSearch(drinkURL) {
 function toString(data) {
     var recipeString = ""; //Empty string that will be appended with ingredients, instructions and measures
     if (data.drinks[0].strIngredient1) {
-        recipeString += data.drinks[0].strIngredient1 + " " + data.drinks[0].strMeasure1 +"\n";
+        recipeString += data.drinks[0].strIngredient1 + " " + data.drinks[0].strMeasure1 +"<br>";
     }
     if (data.drinks[0].strIngredient2) {
-        recipeString += data.drinks[0].strIngredient2 + " " + data.drinks[0].strMeasure2 +"\n";
+        recipeString += data.drinks[0].strIngredient2 + " " + data.drinks[0].strMeasure2 +"<br>";
     }
     if (data.drinks[0].strIngredient3) {
-        recipeString += data.drinks[0].strIngredient3 + " " + data.drinks[0].strMeasure3 +"\n"; 
+        recipeString += data.drinks[0].strIngredient3 + " " + data.drinks[0].strMeasure3 +"<br>"; 
     }
     if (data.drinks[0].strIngredient4) {
-        recipeString += data.drinks[0].strIngredient4 + " " + data.drinks[0].strMeasure4 +"\n";
+        recipeString += data.drinks[0].strIngredient4 + " " + data.drinks[0].strMeasure4 +"<br>";
     }
     if (data.drinks[0].strIngredient5) {
-        recipeString += data.drinks[0].strIngredient5 + " " + data.drinks[0].strMeasure5 +"\n";
+        recipeString += data.drinks[0].strIngredient5 + " " + data.drinks[0].strMeasure5 +"<br>";
     }
     if (data.drinks[0].strIngredient6) {
-        recipeString += data.drinks[0].strIngredient6 + " " + data.drinks[0].strMeasure6 +"\n"; 
+        recipeString += data.drinks[0].strIngredient6 + " " + data.drinks[0].strMeasure6 +"<br>"; 
     }
-    recipeString += "\n" + data.drinks[0].strInstructions;
+    recipeString += "<br>" + data.drinks[0].strInstructions;
     drinkImage = data.drinks[0].strDrinkThumb;
     console.log(recipeString);
     //Dynamically create HTML elements for recipe and image
@@ -271,20 +272,26 @@ function toString(data) {
     recipeParent.innerHTML = '';
     cityDrink.innerHTML = "";
     var recipeName = document.createElement("h3");
+    recipeName.classList = "small-12";
     recipeName.id="recipe-name";
     nameVar = (data.drinks[0].strDrink);
     recipeName.textContent = nameVar;
     //!Dynamically create save button with drink name"
     
-    generateSaveButton();
+    
 
     cityDrink.append(recipeName);
+
     var recipeEl = document.createElement("p");
-    recipeEl.textContent = recipeString;
+    recipeEl.innerHTML = recipeString;
+    recipeEl.classList = "small-6 cell";
     recipeParent.appendChild(recipeEl);
     var recipeImage = document.createElement("img");
     recipeImage.src=drinkImage;
+    recipeImage.classList ="small-6 cell";
     recipeParent.appendChild(recipeImage);
+
+    generateSaveButton();
 }
 
 

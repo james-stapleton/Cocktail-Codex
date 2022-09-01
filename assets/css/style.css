@@ -10,6 +10,10 @@ button {
     cursor: pointer;
 } */
 /* limit size of all images */
-/* img {
+img {
     max-width: 300px;
-} */
+}
+
+* {
+    color: rgb(252, 215, 4);
+}
