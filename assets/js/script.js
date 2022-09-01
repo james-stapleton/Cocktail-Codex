@@ -119,12 +119,16 @@ function getCocktailFromIngredient(ingredientName) {
 
         for (let i = 0; i < data.length; i++) {
             var drinkName = document.createElement("li");
-            drinkName.className = "small-12 medium-4 large-3 cell";
+            drinkName.className = "small-12 medium-6 large-3 cell";
+            var drinkTextEl = document.createElement("p");
+            drinkTextEl.textContent = data[i].strDrink;
+            drinkTextEl.classList = "small-12 medium-6 large 4-cell";
+            drinkName.appendChild(drinkTextEl);
 
-            drinkName.textContent = data[i].strDrink;
+           // drinkName.textContent = data[i].strDrink;
             var image = document.createElement("img");
             image.id="image"+i;
-            image.className = "small-12 medium-4 large-3 cell";
+            image.className = "cell";
             //!----------------------------------------------------------------------------
 
            image.addEventListener("click", function (event) {
@@ -225,7 +229,7 @@ if(currentTemp > 85) {
     tempSearch(drinkURL);
     console.log("It's a scorcher today! Try a refreshing " + drink);
     var weatherDrink = document.createElement("h2")
-    weatherDrink.textContent = ("It's a scorcher today! Try a refreshing " + drink);
+    weatherDrink.textContent = ("It's a scorcher today! Try a refreshing: ");
     tempText.appendChild(weatherDrink);
     }
 
@@ -237,7 +241,7 @@ else if (currentTemp > 60 && currentTemp <=85) {
     tempSearch(drinkURL);
     console.log("Nice Day! Relax with an easy-sipping " + drink);
     var weatherDrink = document.createElement("h2")
-    weatherDrink.textContent = ("Nice Day! Relax with an easy-sipping " + drink);
+    weatherDrink.textContent = ("Nice Day! Relax with an easy-sipping: ");
     tempText.appendChild(weatherDrink);
     }
 
@@ -249,7 +253,7 @@ else if (currentTemp >40 && currentTemp <= 60) {
     tempSearch(drinkURL);
     console.log("It's a bit chilly! You need a little liquid warmth from a stiff " + drink);
     var weatherDrink = document.createElement("h2")
-    weatherDrink.textContent = ("It's a bit chilly! You need a little liquid warmth from a stiff " + drink);
+    weatherDrink.textContent = ("It's a bit chilly! You need a little liquid warmth from a stiff: ");
     tempText.appendChild(weatherDrink);
     }
 
@@ -261,7 +265,7 @@ else {
      tempSearch(drinkURL);
      console.log("Brr. Warm up with a " + drink);
      var weatherDrink = document.createElement("h2")
-     weatherDrink.textContent = ("Brr. Warm up with a " + drink);
+     weatherDrink.textContent = ("Brr. Warm up with a: ");
      tempText.appendChild(weatherDrink);
     }
 }
