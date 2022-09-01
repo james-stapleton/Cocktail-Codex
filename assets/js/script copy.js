@@ -276,10 +276,6 @@ function toString(data) {
     recipeName.id="recipe-name";
     nameVar = (data.drinks[0].strDrink);
     recipeName.textContent = nameVar;
-    //!Dynamically create save button with drink name"
-    
-    
-
     cityDrink.append(recipeName);
 
     var recipeEl = document.createElement("p");

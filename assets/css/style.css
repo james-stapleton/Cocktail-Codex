@@ -1,19 +1,43 @@
-/* #recipe{
-    display: flex;
-}
-
 li{
     list-style-type: none;
 }
 
-button {
+button, li {
     cursor: pointer;
-} */
+} 
 /* limit size of all images */
 img {
     max-width: 300px;
 }
 
+li:hover {
+    color: greenyellow;
+    font-size: large;
+}
+
 * {
     color: rgb(252, 215, 4);
+    text-shadow: black 2px 2px 2px;
+}
+
+label {
+    color: rgb(252, 215, 4);
+    text-shadow: black 2px 2px 2px;
+}
+
+a {
+    color: rgb(252, 215, 4);
+    text-shadow: black 2px 2px 2px;
+}
+
+input::placeholder {
+    text-shadow: none;
+}
+
+input {
+    text-shadow: none;
+}
+
+#age {
+    background-color: black;
 }
