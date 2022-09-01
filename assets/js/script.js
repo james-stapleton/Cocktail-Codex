@@ -9,6 +9,8 @@ var recipeParent = document.querySelector("#recipe");
 var savedList = document.querySelector("#saved-drinks");
 var tempText = document.querySelector("#tempText")
 
+var currentDrink = null;
+
 
 // Event delegation function to display a recipe when a saved drink is clicked on
 savedList.addEventListener("click", function (event) {
@@ -218,14 +220,21 @@ function drinkRec(currentTemp) {
     var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="; //URL for the fetch that will be appended with drink string
 // conditional code for temperature ranges
     tempText.innerHTML = "";
+    console.log("Current drink is: " +currentDrink);
+
 if(currentTemp > 85) {
     //populate the array
     drinksArray = ["margarita", "mojito", "aperol_spritz", "pina_colada", "daiquiri", "paloma", "white_wine_sangria", "mint_julep"];
     //randomly generate the index then select the drink
     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
     drink = drinksArray[drinkIndex];
+    while (drink == currentDrink) {
+        drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+        drink = drinksArray[drinkIndex];
+    }
     //append the selected drink name to the url and call the tempSearch function which contains the Fetch code
     drinkURL += drink;
+    currentDrink = drink;
     tempSearch(drinkURL);
     console.log("It's a scorcher today! Try a refreshing " + drink);
     var weatherDrink = document.createElement("h2")
@@ -237,7 +246,12 @@ else if (currentTemp > 60 && currentTemp <=85) {
     drinksArray = ["moscow_mule", "tom_collins", "rum_punch", "sazerac", "martini", "whiskey_sour", "sidecar"];
     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
     drink = drinksArray[drinkIndex];
+    while (drink == currentDrink) {
+        drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+        drink = drinksArray[drinkIndex];
+    }
     drinkURL += drink;
+    currentDrink = drink;
     tempSearch(drinkURL);
     console.log("Nice Day! Relax with an easy-sipping " + drink);
     var weatherDrink = document.createElement("h2")
@@ -246,10 +260,15 @@ else if (currentTemp > 60 && currentTemp <=85) {
     }
 
 else if (currentTemp >40 && currentTemp <= 60) {
-    drinksArray = ["old_fashioned", "manhatten", "martinez", "negroni", "boulevardier", "", "sidecar"];
+    drinksArray = ["old_fashioned", "manhattan", "martinez", "negroni", "boulevardier", "sidecar"];
     drinkIndex = Math.floor(Math.random()*drinksArray.length); 
     drink = drinksArray[drinkIndex];
+    while (drink == currentDrink) {
+        drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+        drink = drinksArray[drinkIndex];
+    }
     drinkURL += drink;
+    currentDrink = drink;
     tempSearch(drinkURL);
     console.log("It's a bit chilly! You need a little liquid warmth from a stiff " + drink);
     var weatherDrink = document.createElement("h2")
@@ -261,13 +280,19 @@ else {
      drinksArray = ["irish_coffee", "hot_toddy", "mulled_wine", "eggnog", "mudslide"];
      drinkIndex = Math.floor(Math.random()*drinksArray.length); 
      drink = drinksArray[drinkIndex];
+     while (drink == currentDrink) {
+        drinkIndex = Math.floor(Math.random()*drinksArray.length); 
+        drink = drinksArray[drinkIndex];
+    }
      drinkURL += drink;
+    currentDrink = drink;
      tempSearch(drinkURL);
      console.log("Brr. Warm up with a " + drink);
      var weatherDrink = document.createElement("h2")
      weatherDrink.textContent = ("Brr. Warm up with a: ");
      tempText.appendChild(weatherDrink);
     }
+    return currentDrink;
 }
 
 //function to handle the fetch code. Calls the toString function
