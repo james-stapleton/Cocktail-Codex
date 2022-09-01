@@ -20,7 +20,7 @@ savedList.addEventListener("click", function (event) {
 });
 
 // localStorage.setItem("drinks", JSON.stringify(["moscow_mule", "tom_collins", "rum_punch", "sazerac", "martini", "whiskey_sour", "sidecar"]));
-localStorage.clear();
+// localStorage.clear();
 var savedDrinks = localStorage.getItem("drinks");
 var savedDrinksArray = [];
 if (!savedDrinks) {
@@ -133,6 +133,36 @@ function getCocktailFromIngredient(ingredientName) {
             tempSearch(drinkURL);
             generateSaveButton();
             console.log(imageID);
+
+            // START Ranking Code
+
+            var rankNum = 0;
+
+            rankingEntry = {
+                drinkName: document.getElementById(imageID).previousSibling.textContent,
+                rank: rankNum
+            }
+
+            console.log(drinkName);
+
+            var rankings = JSON.parse(localStorage.getItem("rankings"));
+
+            if (!rankings) {
+                rankings = [];
+            }
+
+
+            rankings.push(rankingEntry);
+
+            rankings.sort(function (a, b) {
+                return b.rank - a.rank;
+            });
+
+            localStorage.setItem("rankings", JSON.stringify(rankings));
+            // location.href = "./rankings.html";
+
+            // END Ranking Code
+             
              
          })
  
