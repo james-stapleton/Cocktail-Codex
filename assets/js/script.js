@@ -118,9 +118,12 @@ function getCocktailFromIngredient(ingredientName) {
 
         for (let i = 0; i < data.length; i++) {
             var drinkName = document.createElement("li");
+            drinkName.className = "small-12 medium-4 large-3 cell";
+
             drinkName.textContent = data[i].strDrink;
             var image = document.createElement("img");
             image.id="image"+i;
+            image.className = "small-12 medium-4 large-3 cell";
             //!----------------------------------------------------------------------------
 
            image.addEventListener("click", function (event) {
