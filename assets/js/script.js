@@ -8,6 +8,7 @@ var currentTemp;
 var recipeParent = document.querySelector("#recipe");
 var savedList = document.querySelector("#saved-drinks");
 var tempText = document.querySelector("#tempText")
+var rankingEntry;
 
 var currentDrink = null;
 
@@ -18,6 +19,39 @@ savedList.addEventListener("click", function (event) {
     var targetDrinkName = targetDrink.textContent;
     console.log(targetDrinkName);
     var drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+targetDrinkName;
+    //!-------------------------------------------------------------------------
+
+
+    rankingEntry = {
+        drinkName: targetDrinkName,
+        rank: 1
+    }
+
+    console.log("When I search from saved I should see the drink name: "+rankingEntry.drinkNamedrinkName);
+
+    var rankings = JSON.parse(localStorage.getItem("rankings"));
+
+    if (!rankings) {
+        rankings = [];
+    }
+
+    if ((rankings).some(check => check.drinkName === targetDrinkName)) {
+        objIndex = rankings.findIndex((rankingEntry => rankingEntry.drinkName == targetDrinkName));
+        rankings[objIndex].rank += 1;
+        rankings.push();
+    }
+
+    else {
+    rankings.push(rankingEntry);                
+    }
+
+    rankings.sort(function (a, b) {
+        return b.rank - a.rank;
+    });
+
+    localStorage.setItem("rankings", JSON.stringify(rankings));
+    //!-------------------------------------------------------------------------
+
     tempSearch(drinkURL);
 });
 
@@ -185,6 +219,7 @@ function getCocktailFromIngredient(ingredientName) {
             searchedParent.appendChild(drinkName);
             drinkName.appendChild(image);
         }
+        return rankingEntry;
     }
 
 //!----------------------------------------
