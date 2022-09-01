@@ -34,6 +34,7 @@ function generateSaveButton () {
     console.log("this function was called");
     var save = document.createElement("button");
     save.type = "button";
+    save.className = "button";
     save.innerHTML = "Save this recipe";
 
    save.addEventListener("click", function () {
