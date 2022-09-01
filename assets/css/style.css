@@ -41,3 +41,7 @@ input {
 #age {
     background-color: black;
 }
+
+.border {
+    border: solid gold;
+}
