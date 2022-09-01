@@ -21,9 +21,38 @@
     </style>
 
   </head>
-  <body>
-    <!-- start modal -->
+<body>
+  <div id="statusBar">
+      <section id="rankings"><a href="./rankings.html">Check Drink Rankings</a></section>
+  </div>
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <h1>Cocktail Curator</h1>
+        </div>
+      </div>
+<!-- Start Temp -->
+      <div>
+        <form id="search-form">
+            <label id="search-label" for="search-input">Search for a City:</label>
+            <input id="search-input" class="form-input" placeholder="e.g. Philadelphia"></input>
+            <button class="button">Search</button>
+            <p id="current-temp"></p>
+        </form>
+    </div>
+<!-- End Temp -->
 
+
+<!-- Start Ingredient Search -->
+<div>
+  <form id="search-ingredient-form">
+      <label id="search-ingredient-label" for="search-input">Search by Ingredient:</label>
+      <input id="search-ingredient-input" class="form-input" placeholder="e.g. Vodka"></input>
+      <button class="button">Search</button>
+      <p id="#search-ingrdient"></p>
+  </form>
+</div>
+<!-- End Ingredient Search -->
 <div id="age" data-reveal data-options="closeOnClick:false;closeOnEsc:false;" class="reveal reveal-modal medium">
   <h2 class="text-center">Age Verification for Cocktail Curator</h2>
   <h3 class="bold text-center">You must be at least 21 years of age to access this website.</h3>
@@ -39,11 +68,21 @@
 </div>
   
 
-  <!-- end modal -->
-  <script src="./assets/js/vendor/jquery.js"></script>
-  <script src="./assets/js/vendor/what-input.js"></script>
-  <script src="./assets/js/vendor/foundation.js"></script>
-  <script src="./assets/js/app.js"></script>
-  <script src="./assets/js/script.js"></script>
+<div id="tempText"></div>
+<div id="city-drink-name" class="grid-x grid-margin-x"></div>
+<div id="recipe" class="grid-x grid-margin-x"></div>
+
+
+<div id="saved" class="row">
+  <button class="button" id="saved-drinks-btn">Saved Drinks</button>
+  <ul id="saved-drinks"></ul>
+</div>
+
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/what-input.js"></script>
+    <script src="./assets/js/vendor/foundation.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
+
