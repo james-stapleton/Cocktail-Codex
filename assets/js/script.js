@@ -289,16 +289,16 @@ function toString(data) {
         recipeString +=data.drinks[0].strMeasure2 + " " + data.drinks[0].strIngredient2 + "<br>";
     }
     if (data.drinks[0].strIngredient3) {
-        recipeString += data.drinks[0].strIngredient3 + " " + data.drinks[0].strMeasure3 +"<br>"; 
+        recipeString += data.drinks[0].strMeasure3 + " " + data.drinks[0].strIngredient3 +"<br>"; 
     }
     if (data.drinks[0].strIngredient4) {
-        recipeString += data.drinks[0].strIngredient4 + " " + data.drinks[0].strMeasure4 +"<br>";
+        recipeString += data.drinks[0].strMeasure4 + " " + data.drinks[0].strIngredient4 +"<br>";
     }
     if (data.drinks[0].strIngredient5) {
-        recipeString += data.drinks[0].strIngredient5 + " " + data.drinks[0].strMeasure5 +"<br>";
+        recipeString += data.drinks[0].strMeasure5 + " " + data.drinks[0].strIngredient5 +"<br>";
     }
     if (data.drinks[0].strIngredient6) {
-        recipeString += data.drinks[0].strIngredient6 + " " + data.drinks[0].strMeasure6 +"<br>"; 
+        recipeString += data.drinks[0].strMeasure6 + " " + data.drinks[0].strIngredient6 +"<br>"; 
     }
     recipeString += "<br>" + data.drinks[0].strInstructions;
     drinkImage = data.drinks[0].strDrinkThumb;
