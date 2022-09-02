@@ -96,11 +96,13 @@ var savedDrinksButton = document.querySelector("#saved-drinks-btn");
 savedDrinksButton.addEventListener("click", function () {
   console.log(savedDrinksArray);
   savedList.innerHTML = "";
+  if (savedDrinksArray) {
   for (var i = 0; i < savedDrinksArray.length; i++) {
     var list = document.createElement("li");
     list.textContent = savedDrinksArray[i];
     savedList.appendChild(list);
   }
+}
 });
 
 //Simple function to fetch the temperature from the one call api 
@@ -428,6 +430,14 @@ function toString(data) {
   recipeParent.appendChild(recipeImage);
   generateSaveButton();
 }
+
+var clearButton = document.querySelector("#clear-button");
+clearButton.addEventListener("click", function () {
+    console.log("Clear button clicked");
+    localStorage.removeItem("drinks");
+    savedDrinksArray = [];
+    savedDrinksButton.click();
+})
 
 // ------------------------------------------
 //start modal
