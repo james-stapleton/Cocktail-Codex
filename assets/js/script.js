@@ -431,9 +431,10 @@ function toString(data) {
   generateSaveButton();
 }
 
+//Button to clear the saved drinks list
 var clearButton = document.querySelector("#clear-button");
 clearButton.addEventListener("click", function () {
-    console.log("Clear button clicked");
+    //Remove the key from storage, empty the array holding the saved drinks this session, and click the savedDrinksButton to refresh the (now empty) list
     localStorage.removeItem("drinks");
     savedDrinksArray = [];
     savedDrinksButton.click();
